@@ -2,6 +2,9 @@ package ru.greatbit.wrapwords.beans;
 
 /**
  * Created by azee on 24.08.17.
+ *
+ * An input class - type and positions
+ *
  */
 public class TokenPlaceholder {
     private int left;

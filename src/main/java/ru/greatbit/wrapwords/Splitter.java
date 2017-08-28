@@ -21,11 +21,17 @@ public class Splitter {
         }
 
         List<TokenData> result = new LinkedList<>();
+
+        //Sort nodes to iterate through the list once (O(n)) to build a list of output tokens.
+        // Whole action will take O(n*logn) + n
         List<TokenPlaceholder> sortedPlaceholders = placeholders.stream().sorted((v1, v2) -> new Integer(v1.getLeft()).compareTo(v2.getLeft())).collect(toList());
+
+        //No special placeholder at the beginning og the string
         if (sortedPlaceholders.get(0).getLeft() != 0){
             result.add(new TokenData(source.substring(0, sortedPlaceholders.get(0).getLeft() -1), BLANK));
         }
 
+        //Transfer all placeholders into token data
         for (int i = 0; i < sortedPlaceholders.size(); i++){
             result.add(new TokenData(source.substring(sortedPlaceholders.get(i).getLeft(), sortedPlaceholders.get(i).getRight()), sortedPlaceholders.get(i).getTokenType()));
 
@@ -37,6 +43,7 @@ public class Splitter {
             }
         }
 
+        //There is a tailing line with no special token type
         if (sortedPlaceholders.get(sortedPlaceholders.size() - 1).getRight() != source.length()){
             result.add(new TokenData(source.substring(sortedPlaceholders.get(sortedPlaceholders.size() - 1).getRight(), source.length()), BLANK));
         }

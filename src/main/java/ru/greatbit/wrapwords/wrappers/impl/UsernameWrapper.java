@@ -1,7 +1,6 @@
 package ru.greatbit.wrapwords.wrappers.impl;
 
 import ru.greatbit.wrapwords.wrappers.BaseWrapper;
-import ru.greatbit.wrapwords.wrappers.Wrapper;
 
 import static java.lang.String.format;
 

@@ -2,6 +2,9 @@ package ru.greatbit.wrapwords.beans;
 
 /**
  * Created by azee on 24.08.17.
+ *
+ * Simple ENUM allows to limit possible options
+ *
  */
 public enum TokenType {
     ENTITY,

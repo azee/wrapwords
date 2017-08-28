@@ -2,6 +2,9 @@ package ru.greatbit.wrapwords.beans;
 
 /**
  * Created by azee on 24.08.17.
+ *
+ * Service data type - containers to build result from
+ *
  */
 public class TokenData {
     private String value;

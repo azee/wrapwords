@@ -1,10 +1,12 @@
 package ru.greatbit.wrapwords.wrappers.impl;
 
 import ru.greatbit.wrapwords.wrappers.BaseWrapper;
-import ru.greatbit.wrapwords.wrappers.Wrapper;
 
 /**
  * Created by azee on 28.08.17.
+ *
+ * Used to wrap non-typed entities
+ *
  */
 public class BlankWrapper extends BaseWrapper {
 
