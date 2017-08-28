@@ -4,6 +4,7 @@ import ru.greatbit.wrapwords.beans.TokenData;
 import ru.greatbit.wrapwords.beans.TokenPlaceholder;
 import ru.greatbit.wrapwords.wrappers.WrappersFactory;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class Formatter {
 
-    public static String format(String source, List<TokenPlaceholder> placeholders){
+    public static String format(String source, Collection<TokenPlaceholder> placeholders){
         return format(Splitter.split(source, placeholders));
     }
 
