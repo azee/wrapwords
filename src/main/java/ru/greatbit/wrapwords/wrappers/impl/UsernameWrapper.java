@@ -11,6 +11,7 @@ public class UsernameWrapper implements Wrapper {
 
     @Override
     public String wrap(String source) {
-        return format("<a href='http://twitter.com/%s'>%s</a>", source, source);
+        source = source.substring(1, source.length());
+        return format(" @ <a href='http://twitter.com/%s'>%s</a>", source, source);
     }
 }

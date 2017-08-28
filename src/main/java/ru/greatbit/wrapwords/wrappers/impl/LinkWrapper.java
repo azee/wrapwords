@@ -11,6 +11,6 @@ public class LinkWrapper implements Wrapper{
 
     @Override
     public String wrap(String source) {
-        return format("<a href='%s”>%s</a>", source, source);
+        return format("<a href='%s'>%s</a>", source, source);
     }
 }

@@ -16,26 +16,17 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by azee on 28.08.17.
  */
-public class SplitterTest {
-
-    private final static String POST = "Obama visited Facebook headquarters: http://bit.ly/xyz @elversatile";
+public class SplitterTest extends BaseTest{
 
     @Test
     public void notOrderedPlaceholders(){
-        List<TokenPlaceholder> placeholders = Arrays.asList(
-                new TokenPlaceholder(14, 22, TokenType.ENTITY),
-                new TokenPlaceholder(0, 5, TokenType.ENTITY),
-                new TokenPlaceholder(55, 67, TokenType.USERNAME),
-                new TokenPlaceholder(37, 54, TokenType.LINK)
-        );
-
         List<TokenData> tokenData = Splitter.split(POST, placeholders);
         assertThat(tokenData.size(), is(6));
 
         validateTokenData(tokenData.get(0), TokenType.ENTITY, "Obama");
-        validateTokenData(tokenData.get(1), TokenType.BLANK, "visited");
+        validateTokenData(tokenData.get(1), TokenType.BLANK, " visited ");
         validateTokenData(tokenData.get(2), TokenType.ENTITY, "Facebook");
-        validateTokenData(tokenData.get(3), TokenType.BLANK, "headquarters:");
+        validateTokenData(tokenData.get(3), TokenType.BLANK, " headquarters: ");
         validateTokenData(tokenData.get(4), TokenType.LINK, "http://bit.ly/xyz");
         validateTokenData(tokenData.get(5), TokenType.USERNAME, "@elversatile");
     }
@@ -55,7 +46,7 @@ public class SplitterTest {
         assertThat(tokenData.get(1).getValue(), is("visited"));
 
         assertThat(tokenData.get(2).getTokenType(), is(TokenType.BLANK));
-        assertThat(tokenData.get(2).getValue(), is("Facebook headquarters: http://bit.ly/xyz @elversatile"));
+        assertThat(tokenData.get(2).getValue(), is(" Facebook headquarters: http://bit.ly/xyz @elversatile"));
     }
 
     @Test
@@ -86,7 +77,7 @@ public class SplitterTest {
         assertThat(tokenData.get(0).getValue(), is("Obama"));
 
         assertThat(tokenData.get(1).getTokenType(), is(TokenType.BLANK));
-        assertThat(tokenData.get(1).getValue(), is("visited Facebook headquarters: http://bit.ly/xyz @elversatile"));
+        assertThat(tokenData.get(1).getValue(), is(" visited Facebook headquarters: http://bit.ly/xyz @elversatile"));
     }
 
 

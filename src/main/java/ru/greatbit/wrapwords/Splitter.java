@@ -29,15 +29,16 @@ public class Splitter {
         for (int i = 0; i < sortedPlaceholders.size(); i++){
             result.add(new TokenData(source.substring(sortedPlaceholders.get(i).getLeft(), sortedPlaceholders.get(i).getRight()), sortedPlaceholders.get(i).getTokenType()));
 
+            //Tokens are not following one by one - there is a blank token in between
             if (i != sortedPlaceholders.size() -1){
                 if (sortedPlaceholders.get(i).getRight() + 1 != sortedPlaceholders.get(i + 1).getLeft()){
-                    result.add(new TokenData(source.substring(sortedPlaceholders.get(i).getRight() + 1 , sortedPlaceholders.get(i + 1).getLeft() -1), BLANK));
+                    result.add(new TokenData(source.substring(sortedPlaceholders.get(i).getRight() , sortedPlaceholders.get(i + 1).getLeft()), BLANK));
                 }
             }
         }
 
         if (sortedPlaceholders.get(sortedPlaceholders.size() - 1).getRight() != source.length()){
-            result.add(new TokenData(source.substring(sortedPlaceholders.get(sortedPlaceholders.size() - 1).getRight() + 1, source.length()), BLANK));
+            result.add(new TokenData(source.substring(sortedPlaceholders.get(sortedPlaceholders.size() - 1).getRight(), source.length()), BLANK));
         }
 
         return result;
