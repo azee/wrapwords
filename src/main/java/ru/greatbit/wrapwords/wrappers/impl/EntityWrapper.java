@@ -1,5 +1,6 @@
 package ru.greatbit.wrapwords.wrappers.impl;
 
+import ru.greatbit.wrapwords.wrappers.BaseWrapper;
 import ru.greatbit.wrapwords.wrappers.Wrapper;
 
 import static java.lang.String.format;
@@ -7,10 +8,10 @@ import static java.lang.String.format;
 /**
  * Created by azee on 24.08.17.
  */
-public class EntityWrapper implements Wrapper {
+public class EntityWrapper extends BaseWrapper {
 
     @Override
-    public String wrap(String source) {
+    public String convert(String source) {
         return format("<strong>%s</strong>", source);
     }
 }
